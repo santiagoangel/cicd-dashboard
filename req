@@ -2,6 +2,16 @@ sudo pip install docker-py
 sudo pip install celery
 ansible-playbook -i inventory install.yml
 
+
+#restart
+
+docker restart e1c9da87ab0d
+docker restart d1b69434e6bb
+docker restart b27b9d2f3bdd
+docker restart b14cf7f76310
+docker restart a308f045cd8c
+
+
 docker cp  awx-logos-master/awx/ui/client/assets/logo-header.svg  awx_web:/var/lib/awx/public/static/assets/
 docker cp  awx-logos-master/awx/ui/client/assets/logo-login.svg  awx_web:/var/lib/awx/public/static/assets/
 
