@@ -4,3 +4,29 @@ ansible-playbook -i inventory install.yml
 
 docker cp  awx-logos-master/awx/ui/client/assets/logo-header.svg  awx_web:/var/lib/awx/public/static/assets/
 docker cp  awx-logos-master/awx/ui/client/assets/logo-login.svg  awx_web:/var/lib/awx/public/static/assets/
+
+
+#build images
+docker build ./
+docker login -u `oc whoami` -p `oc whoami -t` registry.pro-us-east-1.openshift.com
+docker tag 692c3211c9b1 registry.pro-us-east-1.openshift.com/spotlight/nginx
+docker push registry.pro-us-east-1.openshift.com/spotlight/nginx
+
+#runner
+ sudo rm /etc/gitlab-runner/*
+ sudo rm /etc/gitlab-runner
+ sudo rm -rf /etc/gitlab-runner
+ sudo gitlab-runner verify
+ sudo gitlab-runner list
+ gitlab-runner start
+ sudo gitlab-runner verify
+ gitlab-runner install
+ sudo -rm -rf /Users/santiagoangel/Library/LaunchAgents/gitlab-runner.plist 
+ sudo rm -rf /Users/santiagoangel/Library/LaunchAgents/gitlab-runner.plist 
+ sudo rm -rf /Library/LaunchAgents/gitlab-runner.plist 
+ gitlab-runner install
+ gitlab-runner start
+ gitlab-runner verify
+ gitlab-runner register
+ gitlab-runner restart
+
